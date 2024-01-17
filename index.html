@@ -7,20 +7,19 @@
     <title>HITAF</title>
     <meta name="title" content="HITAF" />
 
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://hitaf.vercel.app/" />
-<meta property="og:title" content="HITAF" />
-<meta property="og:description" content="HITAF (HIMATIF INFORMATION TASK ASSIST FRAMEWORK) | Sebuah wadah aspiratif untuk mahasiswa Informatika UNIBA Madura." />
-<meta property="og:image" content="https://informatika.unibamadura.ac.id/assets/upload/1384899751.png" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hitaf.vercel.app/" />
+    <meta property="og:description" content="HITAF (HIMATIF INFORMATION TASK ASSIST FRAMEWORK) | Sebuah wadah aspiratif untuk mahasiswa Informatika UNIBA Madura." />
+    <meta property="og:image" content="https://informatika.unibamadura.ac.id/assets/upload/1384899751.png" />
 
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="https://hitaf.vercel.app/" />
-<meta property="twitter:title" content="HITAF" />
-<meta property="twitter:description" content="HITAF (HIMATIF INFORMATION TASK ASSIST FRAMEWORK) | Sebuah wadah aspiratif untuk mahasiswa Informatika UNIBA Madura." />
-<meta property="twitter:image" content="https://informatika.unibamadura.ac.id/assets/upload/1384899751.png" />
-<!--  -->
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://hitaf.vercel.app/" />
+    <meta property="twitter:title" content="HITAF" />
+    <meta property="twitter:description" content="HITAF (HIMATIF INFORMATION TASK ASSIST FRAMEWORK) | Sebuah wadah aspiratif untuk mahasiswa Informatika UNIBA Madura." />
+    <meta property="twitter:image" content="https://informatika.unibamadura.ac.id/assets/upload/1384899751.png" />
+
 
     <meta
       name="description"
@@ -1177,7 +1176,7 @@
                       <div class="input-group">
                         <span class="input-group-text" id="basic-addon1">No. WA</span>
                         <input type="text" name="no-wa" class="form-control" placeholder="Masukkan No. WhatsApp" aria-label="Username" aria-describedby="basic-addon1">
-                        <small>Admin dapat sewaktu-waktu menghubungimu melalui WA jika diperlukan.</small>
+                        <small class="ms-2">Admin dapat sewaktu-waktu menghubungimu melalui WA jika diperlukan.</small>
                       </div>
                       
                     </fieldset>
@@ -1560,6 +1559,13 @@
                 </li>
               </ul>
             </div> -->
+            
+            <div
+              class="fb-like"
+              data-share="true"
+              data-width="450"
+              data-show-faces="true">
+            </div>
 
             <div class="col-lg-3 col-md-6 footer-links">
               <h4>Our Social Networks</h4>
@@ -1624,6 +1630,26 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+
+    <!-- Instagram API -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1128429001473833',
+          xfbml      : true,
+          version    : 'v18.0'
+        });
+        FB.AppEvents.logPageView();
+      };
+    
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "https://connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
     
     <!-- Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
