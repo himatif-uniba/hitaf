@@ -21,6 +21,10 @@ body {
   box-sizing: inherit;
 } */
 
+html {
+  overflow-x: hidden;
+}
+
 #main2 {
   position: relative;
   perspective: 1500px;
