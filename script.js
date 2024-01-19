@@ -32,7 +32,7 @@
   // Setup stage
   // -----------------------
   const initStage = () => {
-    body = document.querySelector("#body");
+    body = document.querySelector("#main2");
     mainContainer = document.querySelector("#main2");
     contentElement = document.querySelector(".intro-content");
 
