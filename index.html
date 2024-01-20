@@ -425,21 +425,16 @@
               data-aos-delay="100"
             >
               <h3>
-                <a href="https://instagram.com/himatifuniba" target="_blank">Instagram HIMATIF UNIBA</a>
+                <a href="https://instagram.com/himatifuniba" target="_blank">Instagram HIMATIF UNIBA</a><a href="https://instagram.com/himatifuniba" class="instagram"><i class="bx bxl-instagram"></i></a>
                 
               </h3>
               <p>Bio :</p>
               <p class="fst-italic">
                 Himpunan Mahasiswa Informatika <br>UNIVERSITAS BAHAUDIN MUDHARY MADURA
               </p>
-              <p>Postingan :</p>
-              <div class="row">
-                <div class="col-4 mb-2"><img src="assets/img/post1.jpg" width="128" alt=""></div>
-                <div class="col-4 mb-2"><img src="assets/img/post2.jpg" width="128" alt=""></div>
-                <div class="col-4 mb-2"><img src="assets/img/post3.jpg" width="128" alt=""></div>
-                <div class="col-4 mb-2"><img src="assets/img/post4.jpeg" width="128" alt=""></div>
-                <div class="col-4 mb-2"><img src="assets/img/post5.jpeg" width="128" alt=""></div>
-                <div class="col-4 mb-2"><img src="assets/img/post6.jpeg" width="128" alt=""></div>
+              <p>6 Postingan Terbaru :</p>
+              <div class="row me-2" id="post-instagram">
+                
               </div>
 
               <!-- <div class="skills-content">
@@ -1938,17 +1933,8 @@
                 Kunjungi media sosial kami
               </p>
               <div class="social-links mt-3">
-                <!-- <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a> -->
-                <a href="https://instagram.com/himatifuniba" class="instagram"
-                  ><i class="bx bxl-instagram"></i
-                ></a>
-                <div
-                  class="fb-like mt-2"
-                  data-share="true"
-                  data-width="450"
-                  data-show-faces="true">
-                </div>
+                <a href="https://instagram.com/himatifuniba" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <!-- <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a> -->
                 <!-- <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
                 <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a> -->
               </div>
@@ -1999,8 +1985,11 @@
     <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
 
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
     <!-- Typed Js -->
-    <!-- <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script>
       var typed = new Typed('#typed', {
         strings: ['an Interactive Program', 'an Innovative Program', 'The Solution for Informatics Students', 'The Ease of Absorbing Aspirations', 'a Forum for the Aspirations of UNIBA Madura Informatics Students', 'All The Solutions'],
@@ -2011,31 +2000,48 @@
         loop: true,
 
       });
-    </script> -->
+    </script>
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
 
-    Instagram API
+    <!-- IG -->
     <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '1128429001473833',
-          xfbml      : true,
-          version    : 'v18.0'
-        });
-        FB.AppEvents.logPageView();
-      };
-    
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "https://connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
+      // Fungsi untuk melakukan panggilan AJAX ke API Instagram
+        function getInstagramData() {
+          // URL API Instagram
+          var apiUrl = 'https://graph.instagram.com/v18.0/17841457497378988/media?fields=id,instagram_graph_user_media,media_type,media_url,username&access_token=IGQWRPdnlhdjhUUy1oSU0wS2E3WXNiX3ZAwRHg1ZA2t6Smd1SEFHSnJrdGJoS3ZA2MzlXbkNHMV8xdlVXVW50UlcyOUx2b1QtUXlwU21KVWhqWnpwMmJzVlIxVDhfUlBaUGl3RkpKNmRaYkVEdnFmLTJWMDVtV1JtN3cZD&limit=6';
+
+          // Melakukan panggilan AJAX menggunakan jQuery
+          $.ajax({
+              url: apiUrl,
+              method: 'GET',
+              dataType: 'json',
+              success: function(result) {
+                  // Panggilan berhasil, lakukan sesuatu dengan data yang diterima
+                  let resultData = result.data;
+                  if(resultData){
+                    $.each(resultData, function (i, item) {
+                      $('#post-instagram').append(`<div class="col-sm-4 col-4 mb-2"><img src="${item.media_url}" width="124" alt=""></div>`)
+                    });
+                    
+                  } else{
+                    $('#post-instagram').html(`<h3 class="text-center">Tidak Ada Postingan</h3>`)
+                  }
+              },
+              error: function(jqXHR, textStatus, errorThrown) {
+                  // Panggilan gagal, tampilkan pesan kesalahan
+                  console.error('Gagal memanggil API Instagram. Status: ' + textStatus);
+              }
+          });
+      }
+
+      // Panggil fungsi ketika halaman dimuat
+      $(document).ready(function() {
+          getInstagramData();
+      });
     </script>
-    
+
     <!-- Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script>
